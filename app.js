@@ -1,7 +1,8 @@
 var express = require('express');
 var app = express();
 var bodyparser = require('body-parser');
-var months = ['January', 'Febuary', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+var months = ['January', 'Febuary', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+var port = process.env.port || 8080;
 
 app.get('/', function (req, res) {
   res.send('type in a unix time stamp at the end of this address to output the date of that timestamp, or type in a date at the end of the address to output the unix timestamp');
