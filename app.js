@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 var bodyparser = require('body-parser');
-var months = ['January', 'Febuary', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+var months = ['january', 'febuary', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
 var port = process.env.PORT || 8080;
 
 app.get('/', function (req, res) {
@@ -27,9 +27,9 @@ app.get('/:ID', function (req,res) {
       var dateArr = dateCheck.replace(/([,])/g, '').split(' ');
       console.log(dateArr);
       console.log(months.indexOf(dateArr[0]));
-      if (months.indexOf(dateArr[0]) >= 0 && dateArr[1] <= 31 && dateArr[2] >= 1970){
+      if (months.indexOf(dateArr[0].toLowerCase()) >= 0 && dateArr[1] <= 31 && dateArr[2] >= 1970){
         var timestamp = new Date(dateArr[2], months.indexOf(dateArr[0]), dateArr[1]);
-        time.month = dateArr[0];
+        time.month = dateArr[0].toLowerCase().replace(/(\b\w)/g, function(l) {return l.toUpperCase();} );
         time.day = dateArr[1];
         time.year = dateArr[2];
         time.unix = timestamp.getTime();
