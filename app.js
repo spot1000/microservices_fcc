@@ -27,7 +27,7 @@ app.get('/:ID', function (req,res) {
       var dateArr = dateCheck.replace(/([,])/g, '').split(' ');
       console.log(dateArr);
       console.log(months.indexOf(dateArr[0]));
-      if (months.indexOf(dateArr[0]) == 0 && dateArr[1] <= 31 && dateArr[2] >= 1970){
+      if (months.indexOf(dateArr[0]) >= 0 && dateArr[1] <= 31 && dateArr[2] >= 1970){
         var timestamp = new Date(dateArr[2], months.indexOf(dateArr[0]), dateArr[1]);
         time.month = dateArr[0];
         time.day = dateArr[1];
